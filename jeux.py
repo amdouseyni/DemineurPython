@@ -17,6 +17,7 @@ def creuser(mineField,i,j):
         return False
     else :
         mineField[i,j]=compteVoisinMine(mineField,i,j)
+        return True 
 def estPresentMine(valTest):
     if valTest==-1:
         return True 
@@ -47,6 +48,24 @@ def partieGagner(mineField):
             j=j+1
         i=i+1
     return test
+def jeu(mineField,i,j):
+    RetourCreuser=creuser(mineField,i,j)
+    if RetourCreuser==False:
+         displayMine(mineField,3,3)
+         print("presence de mine!! puff tu est mort")
+    else :
+        RetourPartieGagne=partieGagner(mineField)
+        if RetourPartieGagne==True :
+            displayMine(mineField,3,3)
+            print("felicitation tu as gange la partie ")
+        else :
+            displayMine(mineField,3,3)
+            choiceCase()
+            x_i=int(input("x="))
+            x_j=int(input("y="))
+            jeu(mineField,x_i,x_j)
+def choiceCase():
+            print("veuiller choisir la prochaine case à jouer en entrant les coordonnees")
 if __name__=="__main__":
     print("[phase teste des fonctions]")
     tab=np.zeros((5,5),dtype=int) # creation d'un tableau vide 
@@ -56,4 +75,5 @@ if __name__=="__main__":
     creuser(mineField,3,3)
     print(mineField)
     displayMine(mineField,5,5)
+
 
