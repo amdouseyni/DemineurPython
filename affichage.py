@@ -1,7 +1,7 @@
-import numpy as np
-import random as rdm
-from jeux import creatMineField
-def displayMine(mineField,nbLigne,nbClone):
+
+def displayMine(mineField):
+    nbLigne=mineField.shape[0]
+    nbClone=mineField.shape[1]
     displayLigne(nbLigne) #affiche une ligne
     print(" ")            # passe au ligne suivant
     for i in range(nbLigne):
@@ -19,12 +19,3 @@ def displayClone(c,valTab):
         print("| * ",end=" ")
     else :
         print("|",valTab," ",end="")
-
-if __name__=="__main__":
-    print("[phase teste des fonctions]")
-    print(" ")
-    tab=np.zeros((5,5),dtype=int) # creation d'un tableau vide 
-    mineField=creatMineField(tab,5,5)
-    displayMine(mineField,5,5)
-    mineField[4,3]=2
-    displayMine(mineField,5,5)
